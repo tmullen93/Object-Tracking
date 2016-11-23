@@ -1,4 +1,4 @@
-vidObj=VideoReader('MajisAquarium.mov');
+vidObj=VideoReader('/Users/Oliver/Desktop/MajisAquarium.mov');
 vidHeight = vidObj.Height;
 vidWidth = vidObj.Width;
 s = struct('cdata',zeros(vidHeight,vidWidth,3,'uint8'),...
