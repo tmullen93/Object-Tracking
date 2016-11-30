@@ -5,7 +5,7 @@ Epsilon = 20;
 % copymovie=movie;
 % movie = uint8(floor(  (movie-mn)*255./(mx-mn) ));
 
-background = uint8(median(movie(:,:,:,1:100),4));
+background = uint8(median(movie(:,:,:,500:1000),4));
 % frames = movie(:,:,:,I);
 
 
@@ -22,7 +22,7 @@ for i =1:5:2000
 %     onefish = findcomponent(mask);
 %     twofish=[255*onefish movie(:,:,:,i)];
     im = ones(size(BW));
-    for j =1:4
+    for j =1:7
         im(CC.PixelIdxList{idx(length(biggest)-j)})=0;
     end
     twofish = [255*im movie(:,:,1,i)];
