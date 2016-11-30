@@ -1,4 +1,4 @@
-function Background_subtraction(movie)
+function listCent= Background_subtraction(movie,background)
 
 
 Epsilon = 30;
@@ -8,7 +8,7 @@ Epsilon = 30;
 % copymovie=movie;
 % movie = uint8(floor(  (movie-mn)*255./(mx-mn) ));
 
-background = uint8(mean(movie(:,:,:,1:1000),4));
+%background = uint8(mean(movie(:,:,:,1:1000),4));
 % frames = movie(:,:,:,I);
 
 
@@ -18,6 +18,8 @@ width=size(movie,2);
 
 numFish=7;
 speedLight=7;
+listCent=zeros(numFish,2,1000);
+
 for i =speedLight:1000
     for j=1:speedLight
         backGroundLarge(:,:,:,j)=background;
@@ -32,10 +34,18 @@ for i =speedLight:1000
     numPixels = cellfun(@numel,CC.PixelIdxList);
     [~,idx] = sort(numPixels);%%%add threshold on size in general delete if number of pixels is lower than threshold even if in top 10
     movieUpdate=movie(:,:,:,i);
+    CENT=regionprops(CC,'Centroid');
     
     for j=1:numFish
+         listCent(j,:,i)=CENT(j).Centroid;
+%         box=BB(j).BoundingBox;
+%         hold on
+%         rectangle('Position',box,'EdgeColor','g','LineWidth', 3)
+%         hold off
         z(CC.PixelIdxList{idx(end-j+1)})=1;
+        
         movieUpdate=crossHair(CC.PixelIdxList{idx(end-j+1)},movieUpdate);
+        
     end
   
     
@@ -45,8 +55,8 @@ for i =speedLight:1000
 %     onefish = findcomponent(mask);
    
     twofish=[ movieUpdate];%255*mask3 background];
-    imshow(twofish);
-    pause(.000001)
+    %imshow(twofish);
+    %pause(.000001)
 end
 end
 function [im] =  crossHair(pixelI,im)
@@ -76,6 +86,7 @@ function [im] =  crossHair(pixelI,im)
     im(max_x-3:max_x, min_y:max_y, 2, :)=255;
     im(max_x-3:max_x, min_y:max_y, 3, :)=0;
 end
+
 % function fish = findcomponent(im)
 %     imageHeight = size(im,1);
 %     imageWidth = size(im,2);
