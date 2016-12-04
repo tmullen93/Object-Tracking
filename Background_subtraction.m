@@ -1,7 +1,7 @@
 function listCent= Background_subtraction(movie,background)
 
 
-Epsilon = 30;
+Epsilon = 10;
 
 % mn = min(min(min(min(movie))));
 % mx = max(max(max(max(movie))));
@@ -16,11 +16,12 @@ Epsilon = 30;
 height=size(movie,1);
 width=size(movie,2);
 
-numFish=7;
-speedLight=7;
+numFish=12;
+speedLight=20;
 listCent=zeros(numFish,2,1000);
 
 for i =speedLight:1000
+    
     for j=1:speedLight
         backGroundLarge(:,:,:,j)=background;
     end
@@ -44,7 +45,7 @@ for i =speedLight:1000
 %         hold off
         z(CC.PixelIdxList{idx(end-j+1)})=1;
         
-        movieUpdate=crossHair(CC.PixelIdxList{idx(end-j+1)},movieUpdate);
+%         movieUpdate=crossHair(CC.PixelIdxList{idx(end-j+1)},movieUpdate);
         
     end
   
@@ -55,8 +56,8 @@ for i =speedLight:1000
 %     onefish = findcomponent(mask);
    
     twofish=[ movieUpdate];%255*mask3 background];
-    %imshow(twofish);
-    %pause(.000001)
+%     imshow(twofish);
+%     pause(.000001)
 end
 end
 function [im] =  crossHair(pixelI,im)
