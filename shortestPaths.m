@@ -10,8 +10,13 @@ for k = 1:size(complist,3)-1
 end
 
 for k =1:1:size(complist,3)-1
-    [~, I] = min(frameDiffs(:,:,k),[],2);
-    best_match(:,k) = I;
+    if k==120
+    end
+    [short, I] = min(frameDiffs(:,:,k),[],2);
+    best_match_vec=I;
+    best_match_vec(short>40)=-99;
+    best_match(:,k) = best_match_vec;
+    %best_match(short>20) = -99;
 end
 
 

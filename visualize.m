@@ -1,5 +1,5 @@
-speedLight=24;
-[listCent,fullComps]= Background_subtraction(movie,background,speedLight);
+speedLight=12;
+%[listCent,fullComps]= Background_subtraction(movie,background,speedLight);
 [matches, frameDiffs]=shortestPaths(listCent);
 
 
@@ -13,17 +13,21 @@ for i =speedLight:length(fullComps)
     movieUpdate=movie(:,:,:,i);
     loopend=min(length(idx),7);
     for j=1:loopend%numFish
-        if i==speedLight
-            movieUpdate=crossHair(comps.PixelIdxList{idx(end-j+1)},movieUpdate,colors{j},listCent(j,:,i));
-        
+        if matches(j,i-1)==-99
+            %do nothing because component is gone
         else
-            colorIdx=matches(j,i-1);
-            movieUpdate=crossHair(comps.PixelIdxList{idx(end-j+1)},movieUpdate,colors{colorIdx},listCent(j,:,i));
+            if i==speedLight
+                movieUpdate=crossHair(comps.PixelIdxList{idx(end-j+1)},movieUpdate,colors{j},listCent(j,:,i));
+                
+            else
+                colorIdx=matches(j,i-1);
+                movieUpdate=crossHair(comps.PixelIdxList{idx(end-j+1)},movieUpdate,colors{colorIdx},listCent(j,:,i));
+            end
         end
     end
     
     twofish=[ movieUpdate];%255*mask3 background];
-   
+   %figure
     imshow(twofish);
     pause(.000001)
 end
