@@ -4,7 +4,7 @@ vidWidth = vidObj.Width;
 s = struct('cdata',zeros(vidHeight,vidWidth,3,'uint8'),...
     'colormap',[]);
 k = 1;
-numFrame=5000;
+numFrame=1000;
 movie = zeros(vidHeight,vidWidth,3,numFrame,'uint8');
 while k<numFrame+1
     movie(:,:,:,k) = readFrame(vidObj);

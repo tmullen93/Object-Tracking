@@ -1,4 +1,4 @@
-function best_match = shortestPaths( complist )
+function [best_match,frameDiffs] = shortestPaths( complist )
 %1) Build graph from list of connected components
 %2) Return shortest paths from first frame to lasts
 
