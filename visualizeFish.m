@@ -1,7 +1,8 @@
 numFish=4;
 speedLight=12;
 startFrame=100;%must be greater than speedLight
-intMovie=im2uint8(movie);
+newbackground=imread('newbackground.png');
+numFrame=size(movie,4);
 fish= Background_subtractionFishReturn(movie,newbackground,speedLight,numFish);
 [fish, frameDiffs]=shortestPathsFish(fish,numFish, startFrame);
 
@@ -10,7 +11,10 @@ colors={[255 0 0],[0 255 0],[0 0 255], [255 0 213],...
     [255 255 255],[0 239 255],[255 247 0]};
 count=1;
 movieUpdateOld=movie(:,:,:,1);
-for i =startFrame:1000
+v = VideoWriter('fishTrackingSpeedLight12fish4Color.avi');
+v.FrameRate=30;
+open(v);
+for i =startFrame:numFrame-1
 %     comps=fullComps{i};
 %     numPixels = cellfun(@numel,comps.PixelIdxList);
 %     [~,idx] = sort(numPixels);
@@ -31,8 +35,9 @@ for i =startFrame:1000
     
     twofish=[movieUpdate];%[movieUpdateOld    %255*mask3 background];
    %figure
-    imshow(twofish);
-
+    %imshow(twofish);
+    writeVideo(v, twofish);
     movieUpdateOld=movieUpdate;
-    pause(.000001)
+    %pause(.000001)
 end
+ close(v);

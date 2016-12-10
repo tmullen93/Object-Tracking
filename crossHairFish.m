@@ -12,23 +12,23 @@ function [im] =  crossHairFish(im, fish, color)
     im(center(1), center(2), 3, :)=color(3);  
         
     %min_y
-    im(min_x:max_x, min_y:min_y+3, 1, :)=color(1);
-    im(min_x:max_x, min_y:min_y+3, 2, :)=color(2);
-    im(min_x:max_x, min_y:min_y+3, 3, :)=color(3);
+    im(min_x:max_x, min_y:min_y, 1, :)=color(1);
+    im(min_x:max_x, min_y:min_y, 2, :)=color(2);
+    im(min_x:max_x, min_y:min_y, 3, :)=color(3);
     
     %max_y
-    im(min_x:max_x, max_y-3:max_y, 1, :)=color(1);
-    im(min_x:max_x, max_y-3:max_y, 2, :)=color(2);
-    im(min_x:max_x, max_y-3:max_y, 3, :)=color(3);
+    im(min_x:max_x, max_y:max_y, 1, :)=color(1);
+    im(min_x:max_x, max_y:max_y, 2, :)=color(2);
+    im(min_x:max_x, max_y:max_y, 3, :)=color(3);
     
     %min_x
-    im(min_x:min_x+3, min_y:max_y, 1, :)=color(1);
-    im(min_x:min_x+3, min_y:max_y, 2, :)=color(2);
-    im(min_x:min_x+3, min_y:max_y, 3, :)=color(3);
+    im(min_x:min_x, min_y:max_y, 1, :)=color(1);
+    im(min_x:min_x, min_y:max_y, 2, :)=color(2);
+    im(min_x:min_x, min_y:max_y, 3, :)=color(3);
     
     %max_x 
-    im(max_x-3:max_x, min_y:max_y, 1, :)=color(1);
-    im(max_x-3:max_x, min_y:max_y, 2, :)=color(2);
-    im(max_x-3:max_x, min_y:max_y, 3, :)=color(3);
+    im(max_x:max_x, min_y:max_y, 1, :)=color(1);
+    im(max_x:max_x, min_y:max_y, 2, :)=color(2);
+    im(max_x:max_x, min_y:max_y, 3, :)=color(3);
     end
 end

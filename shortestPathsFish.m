@@ -19,17 +19,13 @@ for k =startFrame:size(frameDiffs,3)-1
     vec(short>10)=-99;
      %a=vec;
     goodColors=vec(find(vec>-99));
-    k
     
     missingColors=setdiff(1:numFish,goodColors);
-    if k==513
-        disp('im here')
-    end
     numColors=numFish-length(goodColors);
     vec(vec==-99)=missingColors(1:numColors);
     fish(:,7,k+1) = vec;
 end
-
+%fish(:,7,size(complist,3))=fish(:,7,size(complist,3)-1);
 
 
 
