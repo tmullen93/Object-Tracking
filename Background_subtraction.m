@@ -16,12 +16,14 @@ Epsilon = 10;
 height=size(movie,1);
 width=size(movie,2);
 
-numFish=7;
-%speedLight=12;
+
+numFish=12;
+speedLight=20;
 listCent=zeros(numFish,2,1000);
 fullComp=cell(1000,1);
 %backGroundLarge=zeros(height,width,3,speedLight);
 for i =speedLight:1000
+    
     for j=1:speedLight
         backGroundLarge(:,:,:,j)=background;
     end
@@ -40,6 +42,7 @@ for i =speedLight:1000
     loopend=min(length(idx),numFish);
     for j=1:loopend
         
+
         pixelI=CC.PixelIdxList{idx(end-j+1)};
         %listCent(j,:,i)=CENT(j).Centroid;
         [xIdx, yIdx] = ind2sub([height, width], pixelI);
@@ -56,9 +59,11 @@ for i =speedLight:1000
         %z(CC.PixelIdxList{idx(end-j+1)})=1;
         
         %movieUpdate=crossHair(CC.PixelIdxList{idx(end-j+1)},movieUpdate);
+
         
     end
     
+<<<<<<< HEAD
     
         mask3(:,:,1)=z;
         mask3(:,:,2)=z;
@@ -68,6 +73,17 @@ for i =speedLight:1000
     %twofish=[ movieUpdate];%255*mask3 background];
     imshow(255*mask3)%twofish);
     %pause(.000001)
+=======
+    mask3(:,:,1)=z;
+    mask3(:,:,2)=z;
+    mask3(:,:,3)=z;
+%     onefish = findcomponent(mask);
+   
+    twofish=[ movieUpdate];%255*mask3 background];
+%     imshow(twofish);
+%     pause(.000001)
+
+>>>>>>> ebb1e9de916d474c59228b474ffd8e5b706d41c4
 end
 end
 % function [im] =  crossHair(pixelI,im)
