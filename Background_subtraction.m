@@ -60,43 +60,43 @@ for i =speedLight:1000
     end
     
     
-    %     mask3(:,:,1)=z;
-    %     mask3(:,:,2)=z;
-    %     mask3(:,:,3)=z;
+        mask3(:,:,1)=z;
+        mask3(:,:,2)=z;
+        mask3(:,:,3)=z;
     %     onefish = findcomponent(mask);
     
     %twofish=[ movieUpdate];%255*mask3 background];
-    %imshow(twofish);
+    imshow(255*mask3)%twofish);
     %pause(.000001)
 end
 end
-function [im] =  crossHair(pixelI,im)
-[xIdx, yIdx] = ind2sub([size(im,1), size(im,2)], pixelI);
-min_x = min(xIdx);
-min_y = min(yIdx);
-max_x = max(xIdx);
-max_y = max(yIdx);
-
-%min_y
-im(min_x:max_x, min_y:min_y+3, 1, :)=0;
-im(min_x:max_x, min_y:min_y+3, 2, :)=255;
-im(min_x:max_x, min_y:min_y+3, 3, :)=0;
-
-%max_y
-im(min_x:max_x, max_y-3:max_y, 1, :)=0;
-im(min_x:max_x, max_y-3:max_y, 2, :)=255;
-im(min_x:max_x, max_y-3:max_y, 3, :)=0;
-
-%min_x
-im(min_x:min_x+3, min_y:max_y, 1, :)=0;
-im(min_x:min_x+3, min_y:max_y, 2, :)=255;
-im(min_x:min_x+3, min_y:max_y, 3, :)=0;
-
-%max_x
-im(max_x-3:max_x, min_y:max_y, 1, :)=0;
-im(max_x-3:max_x, min_y:max_y, 2, :)=255;
-im(max_x-3:max_x, min_y:max_y, 3, :)=0;
-end
+% function [im] =  crossHair(pixelI,im)
+% [xIdx, yIdx] = ind2sub([size(im,1), size(im,2)], pixelI);
+% min_x = min(xIdx);
+% min_y = min(yIdx);
+% max_x = max(xIdx);
+% max_y = max(yIdx);
+% 
+% %min_y
+% im(min_x:max_x, min_y:min_y+3, 1, :)=0;
+% im(min_x:max_x, min_y:min_y+3, 2, :)=255;
+% im(min_x:max_x, min_y:min_y+3, 3, :)=0;
+% 
+% %max_y
+% im(min_x:max_x, max_y-3:max_y, 1, :)=0;
+% im(min_x:max_x, max_y-3:max_y, 2, :)=255;
+% im(min_x:max_x, max_y-3:max_y, 3, :)=0;
+% 
+% %min_x
+% im(min_x:min_x+3, min_y:max_y, 1, :)=0;
+% im(min_x:min_x+3, min_y:max_y, 2, :)=255;
+% im(min_x:min_x+3, min_y:max_y, 3, :)=0;
+% 
+% %max_x
+% im(max_x-3:max_x, min_y:max_y, 1, :)=0;
+% im(max_x-3:max_x, min_y:max_y, 2, :)=255;
+% im(max_x-3:max_x, min_y:max_y, 3, :)=0;
+% end
 
 % function fish = findcomponent(im)
 %     imageHeight = size(im,1);
